@@ -21,3 +21,10 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: Maven@3
+  displayName: Build Docker image
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'spring-boot:build-image'
+    publishJUnitResults: false
+    jdkVersionOption: '1.17'
